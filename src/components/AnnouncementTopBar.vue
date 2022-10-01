@@ -2,7 +2,7 @@
 <template>
   <div
     id="announcement-bar"
-    class="bg-black text-white py-3 text-center text-sm font-medium"
+    class="bg-black fixed left-0 right-0 top-0 text-white py-3 text-center text-sm font-medium"
   >
     <p>Free Shipping on orders eligible orders above £50</p>
   </div>
