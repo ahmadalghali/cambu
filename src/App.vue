@@ -6,10 +6,12 @@ import Footer from "./components/footer/index.vue";
 </script>
 
 <template>
-  <AnnouncementTopBar />
-  <NavBar />
-  <!-- <RouterView />
-  <Footer /> -->
+  <div class="relative">
+    <AnnouncementTopBar />
+    <NavBar />
+    <RouterView />
+    <Footer />
+  </div>
 </template>
 
 <style scoped></style>
