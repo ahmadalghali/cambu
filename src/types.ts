@@ -8,9 +8,17 @@ export interface ShoeType {
 }
 
 export enum CategoryEnum {
-  Running = "RUNNING",
-  Walking = "Walking",
-  Formal = "FORMAL",
+  ALL = "All",
+  TRAINERS = "Trainers",
+  RUNNING = "Running",
+  WALKING = "Walking",
+  FORMAL = "Formal",
+  BASKETBALL = "Basketball",
+  FOOTBALL = "Football",
+  HIKING = "Hiking",
+  CASUAL = "Casual",
+  SLIPPERS = "Slippers",
+  SANDALS = "Sandals",
 }
 
 export interface ShoeSizeStockType {

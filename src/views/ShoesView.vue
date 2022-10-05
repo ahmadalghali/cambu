@@ -4,8 +4,8 @@ import { useRoute } from "vue-router";
 import Categories from "@/components/ShoesCategories.vue";
 import FilterIcon from "@/components/FilterIcon.vue";
 import ShoesGrid from "@/components/ShoesGrid.vue";
-import type { ShoeType, CategoryType } from "@/types";
-import categories from "@/data/categories.json";
+import type { ShoeType } from "@/types";
+import { categories } from "@/data/categories";
 // import { useFetch } from "@vueuse/core";
 // import shoes from "@/data/shoes.json";
 import { useFetch } from "@/composables/useFetch";
@@ -51,9 +51,6 @@ onBeforeMount(async () => {
       </div>
 
       <ShoesGrid :shoes="shoes" />
-    </div>
-    <div v-else class="container">
-      <h3>No Shoes found</h3>
     </div>
   </div>
 </template>

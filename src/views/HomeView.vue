@@ -7,7 +7,10 @@ import SaleHome from "@/components/SaleHome.vue";
 
 <template>
   <main>
-    <div class="container flex justify-center my-5">
+    <div class="container mx-auto grid place-items-center my-5 space-y-10">
+      <SaleHome />
+      <SaleHome />
+      <SaleHome />
       <SaleHome />
     </div>
     <!-- <CarouselHome /> -->

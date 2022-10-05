@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { CategoryEnum } from "@/types";
+import { CategoryEnum } from "@/types";
+import { computed, ref } from "vue";
 
 interface Props {
   categories: CategoryEnum[];
@@ -7,10 +8,10 @@ interface Props {
 
 const props = defineProps<Props>();
 
-// const selected = Categories
+const selectedCategory = ref(CategoryEnum.All);
 
-const isSelected = (categoryId: number) => {
-  return;
+const isSelected = (category: CategoryEnum) => {
+  return category == selectedCategory.value;
 };
 </script>
 <template>
@@ -20,7 +21,11 @@ const isSelected = (categoryId: number) => {
     <li
       v-for="category in categories"
       :key="category"
-      class="category hover:opacity-40"
+      class="hover:scale-105 transition-all hover:-translate-y-[1px] ease-in duration-75"
+      :class="{
+        'border-b-2 border-black font-semibold shadow-xl': isSelected(category),
+      }"
+      @click="selectedCategory = category"
     >
       {{ category }}
     </li>
