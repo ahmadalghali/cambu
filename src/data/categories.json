@@ -1,0 +1,13 @@
+[
+  { "id": 1, "name": "All" },
+  { "id": 2, "name": "Trainers" },
+  { "id": 3, "name": "Running" },
+  { "id": 4, "name": "Basketball" },
+  { "id": 5, "name": "Football" },
+  { "id": 6, "name": "Hiking" },
+  { "id": 7, "name": "Walking" },
+  { "id": 8, "name": "Casual" },
+  { "id": 9, "name": "Slippers" },
+  { "id": 10, "name": "Evening" },
+  { "id": 11, "name": "Sandals" }
+]

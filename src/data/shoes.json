@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Nike Air Force 1's",
+    "category": "Trainers",
+    "price": "129.99"
+  },
+  {
+    "id": 2,
+    "name": "Yeezy's",
+    "category": "Casual",
+    "price": "349.99"
+  },
+  {
+    "id": 3,
+    "name": "Nike Air Force 1's",
+    "category": "Trainers",
+    "price": "129.99"
+  },
+  {
+    "id": 4,
+    "name": "Yeezy's",
+    "category": "Casual",
+    "price": "349.99"
+  },
+  {
+    "id": 5,
+    "name": "Nike Air Force 1's",
+    "category": "Trainers",
+    "price": "129.99"
+  }
+]
