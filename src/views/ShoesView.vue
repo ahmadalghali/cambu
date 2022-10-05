@@ -4,7 +4,7 @@ import { useRoute } from "vue-router";
 import Categories from "@/components/ShoesCategories.vue";
 import FilterIcon from "@/components/FilterIcon.vue";
 import ShoesGrid from "@/components/ShoesGrid.vue";
-import type { ShoeType } from "@/types";
+import { CategoryEnum, type ShoeType } from "@/types";
 import { categories } from "@/data/categories";
 // import { useFetch } from "@vueuse/core";
 // import shoes from "@/data/shoes.json";
@@ -30,16 +30,22 @@ const title = computed(() => {
 
 let shoes = ref<ShoeType[] | null>(null);
 
-onBeforeMount(async () => {
-  const { data } = await useFetch<ShoeType[]>("/shoes").json();
-  shoes.value = data.value;
+onBeforeMount(() => {
+  fetchShoes(CategoryEnum.ALL);
 });
+
+async function fetchShoes(category: CategoryEnum) {
+  console.log("category :>> ", category);
+  const url = category ? `/shoes?category=${category}` : "/shoes";
+  const { data } = await useFetch<ShoeType[]>(url).json();
+  shoes.value = data.value;
+}
 </script>
 <template>
   <div class="">
     <div class="mx-5">
       <h1 class="text-xl">{{ title }}</h1>
-      <Categories :categories="categories" />
+      <Categories :categories="categories" @categoryChanged="fetchShoes" />
     </div>
     <hr />
     <div v-if="shoes?.length" class="">

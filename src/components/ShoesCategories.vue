@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { CategoryEnum } from "@/types";
-import { computed, ref } from "vue";
+import { ref, watch } from "vue";
 
 interface Props {
   categories: CategoryEnum[];
@@ -8,11 +8,17 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const selectedCategory = ref(CategoryEnum.All);
+const emit = defineEmits(["categoryChanged"]);
+
+const selectedCategory = ref(CategoryEnum.ALL);
 
 const isSelected = (category: CategoryEnum) => {
   return category == selectedCategory.value;
 };
+
+watch(selectedCategory, () => {
+  emit("categoryChanged", selectedCategory.value);
+});
 </script>
 <template>
   <ul
