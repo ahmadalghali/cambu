@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeMount, onMounted, ref, type Ref } from "vue";
+import { computed, onBeforeMount, onMounted, ref, watch, type Ref } from "vue";
 import { useRoute } from "vue-router";
 import shoes from "@/data/shoes.json";
 import type { ShoeType, SizeType } from "@/types";
@@ -20,6 +20,8 @@ const selectedSize = ref<SizeType | null>(null);
 const shoppingBagStore = useShoppingBagStore();
 const {} = storeToRefs(shoppingBagStore);
 
+const showSizeError = ref(false);
+
 onBeforeMount(async () => {
   const { data } = await useFetch<ShoeType>(`/shoes/${shoeId.value}`).json();
   shoe.value = data.value;
@@ -30,7 +32,7 @@ const formattedShoePrice = computed(() =>
 );
 
 function addItemToBag() {
-  if (!selectedSize.value) return alert("You must select a size");
+  if (!selectedSize.value) return (showSizeError.value = true);
 
   shoppingBagStore.addItemToBag({
     shoe: shoe.value!,
@@ -42,6 +44,10 @@ function addItemToBag() {
 function setSelectedSize(size: SizeType) {
   selectedSize.value = size;
 }
+
+watch(selectedSize, () => {
+  if (selectedSize.value) showSizeError.value = false;
+});
 </script>
 <template>
   <div class="container mx-auto px-5 my-10">
@@ -56,8 +62,14 @@ function setSelectedSize(size: SizeType) {
 
       <img :src="shoe.image" alt="shoe" class="w-100 mt-2" />
 
-      <SizeChart :shoeDetails="shoe.details" @sizeSelected="setSelectedSize" />
-
+      <SizeChart
+        :shoeDetails="shoe.details"
+        @sizeSelected="setSelectedSize"
+        :class="{ 'border border-red-500 rounded-2xl p-3': showSizeError }"
+      />
+      <p v-if="showSizeError" class="text-red-600">
+        You must select a size to continue
+      </p>
       <button
         class="btn btn-primary w-full rounded-full mt-5 h-14 shadow-md hover:scale-105 hover:-translate-y-1"
         @click="addItemToBag"
