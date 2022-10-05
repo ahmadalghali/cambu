@@ -12,6 +12,7 @@
   "dependencies": {
     "@vueuse/core": "^9.3.0",
     "daisyui": "^2.31.0",
+    "lodash": "^4.17.21",
     "pinia": "^2.0.21",
     "primeicons": "^6.0.1",
     "primevue": "^3.17.0",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
+    "@types/lodash": "^4.14.186",
     "@types/node": "^16.11.56",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vue/eslint-config-prettier": "^7.0.0",

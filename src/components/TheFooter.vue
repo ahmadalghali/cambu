@@ -2,7 +2,7 @@
 import TheFooterSocials from "./TheFooterSocials.vue";
 </script>
 <template>
-  <footer class="footer footer-center p-10 bg-accent text-primary-content">
+  <footer class="footer footer-center p-10 bg-secondary text-primary-content">
     <div>
       <p class="font-semibold">
         Golden Shoe Ltd. <br />Providing great shoes since 1992

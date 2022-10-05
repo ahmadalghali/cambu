@@ -8,6 +8,11 @@ interface Props {
 
 const props = defineProps<Props>();
 
+interface Emits {
+  (e: "sizeSelected", size: SizeType): void;
+}
+const emit = defineEmits<Emits>();
+
 let selectedSize = ref<SizeType | null>(null);
 
 const isSelectedSize = (size: SizeType) => {
@@ -15,6 +20,7 @@ const isSelectedSize = (size: SizeType) => {
 };
 
 const setSelectedSize = (e: MouseEvent, size: SizeType) => {
+  emit("sizeSelected", size);
   // @ts-ignore
   const isDisabled = e.target.classList.contains("disabled");
   if (isDisabled) return;
@@ -30,7 +36,7 @@ const outOfStock = (detail: ShoeSizeStockType) => {
     <li
       v-for="detail in shoeDetails"
       :key="detail.size.name"
-      class="border border-gray-300 py-3 px-5 rounded-md text-center font-light cursor-pointer hover:border-black"
+      class="border border-gray-300 py-3 px-5 rounded-md text-center font-light cursor-pointer hover:border-black transition-all"
       :class="{
         'disabled opacity-50 bg-gray-300 text-gray-700 border-none hover:border-none':
           outOfStock(detail),
@@ -40,15 +46,6 @@ const outOfStock = (detail: ShoeSizeStockType) => {
     >
       {{ detail.size.name }}
     </li>
-    <!-- <li
-      v-for="size in shoeSizes"
-      :key="size.name"
-      class="border border-gray-300 py-3 px-5 rounded-md text-center font-light cursor-pointer hover:border-black"
-      :class="{ 'bg-gray-900 text-white': isSelectedSize(size.id) }"
-      @click="setSelectedSize(size.id)"
-    >
-      {{ size }}
-    </li> -->
   </ul>
 </template>
 <style scoped></style>
