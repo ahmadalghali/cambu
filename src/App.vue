@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
-import AnnouncementTopBar from "./components/AnnouncementTopBar.vue";
-import NavBar from "./components/nav/index.vue";
-import Footer from "./components/footer/index.vue";
+import TheAnnouncementTopBar from "./components/TheAnnouncementTopBar.vue";
+import TheNavBar from "@/components/TheNavBar.vue";
+import TheFooter from "@/components/TheFooter.vue";
 </script>
 
 <template>
-  <div class="relative">
-    <AnnouncementTopBar />
-    <NavBar />
-    <RouterView />
-    <Footer />
-  </div>
+  <TheAnnouncementTopBar />
+  <TheNavBar />
+  <RouterView class="mt-32" />
+  <TheFooter />
 </template>
 
 <style scoped></style>

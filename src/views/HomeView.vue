@@ -1,9 +1,17 @@
 <script setup lang="ts">
-import Hero from "../components/Hero.vue";
+import HeroHome from "../components/HeroHome.vue";
+import CarouselHome from "../components/CarouselHome.vue";
+
+import SaleHome from "@/components/SaleHome.vue";
 </script>
 
 <template>
   <main>
-    <Hero />
+    <div class="container flex justify-center my-5">
+      <SaleHome />
+    </div>
+    <!-- <CarouselHome /> -->
+
+    <!-- <HeroHome /> -->
   </main>
 </template>
