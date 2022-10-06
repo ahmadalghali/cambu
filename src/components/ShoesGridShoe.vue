@@ -20,7 +20,7 @@ const formattedShoePrice = computed(() =>
       <img
         src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,b_rgb:f5f5f5/8c56cae4-299c-476d-a2df-8a93a53c8eb3/quest-5-road-running-shoes-24Bw6b.png"
         alt="shoe"
-        class="w-100 object-cover"
+        class="aspect-square object-cover"
       />
       <AddToFavouritesIcon class="absolute top-[5%] left-[85%]" />
       <!-- :solid="shoe.isFavourited"

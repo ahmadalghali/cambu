@@ -75,36 +75,80 @@ watch(selectedSize, () => {
       <p class="ml-2">All shoes</p>
     </div>
     <div v-if="shoe" class="mt-5">
-      <div class="details">
+      <div class="details lg:hidden">
         <p class="text-xl">{{ shoe.name }}</p>
-        <p class="my-4 text-gray-500">
+        <p class="my-2 mb-5 text-gray-500">
           {{ shoe.category }}
         </p>
         <p class="text-xl">£{{ formattedShoePrice }}</p>
       </div>
+      <div class="hidden lg:grid grid-cols-2 gap-x-5">
+        <img
+          :src="shoe.image"
+          alt="shoe"
+          class="aspect-square object-cover mt-2 lg:mt-0"
+        />
 
-      <img :src="shoe.image" alt="shoe" class="w-100 mt-2" />
+        <div class="">
+          <div class="">
+            <p class="text-3xl">{{ shoe.name }}</p>
+            <p class="text-gray-500">
+              {{ shoe.category }}
+            </p>
+            <p class="text-xl mt-3">£{{ formattedShoePrice }}</p>
+          </div>
+          <SizeChart
+            :shoeDetails="shoe.details"
+            @sizeSelected="setSelectedSize"
+            :class="{ 'border border-red-500 rounded-2xl p-3': showSizeError }"
+          />
+          <p v-if="showSizeError" class="text-red-600">
+            You must select a size to continue
+          </p>
 
-      <SizeChart
-        :shoeDetails="shoe.details"
-        @sizeSelected="setSelectedSize"
-        :class="{ 'border border-red-500 rounded-2xl p-3': showSizeError }"
-      />
-      <p v-if="showSizeError" class="text-red-600">
-        You must select a size to continue
-      </p>
-      <button
-        class="btn btn-primary w-full rounded-full mt-5 h-14 shadow-md hover:scale-105 hover:-translate-y-1"
-        @click="addItemToBag"
-      >
-        ADD TO BAG
-      </button>
+          <p class="text-gray-700 my-10">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia
+            doloremque magni nesciunt exercitationem ex error cum quasi maxime
+            provident inventore.
+          </p>
 
-      <p class="text-gray-700 my-10">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia
-        doloremque magni nesciunt exercitationem ex error cum quasi maxime
-        provident inventore.
-      </p>
+          <button
+            class="btn btn-primary w-full rounded-full mt-5 lg:mt-0 h-14 shadow-md hover:scale-105 hover:-translate-y-1"
+            @click="addItemToBag"
+          >
+            ADD TO BAG
+          </button>
+        </div>
+      </div>
+
+      <div class="lg:hidden">
+        <img
+          :src="shoe.image"
+          alt="shoe"
+          class="aspect-square object-cover mt-2"
+        />
+
+        <SizeChart
+          :shoeDetails="shoe.details"
+          @sizeSelected="setSelectedSize"
+          :class="{ 'border border-red-500 rounded-2xl p-3': showSizeError }"
+        />
+        <p v-if="showSizeError" class="text-red-600">
+          You must select a size to continue
+        </p>
+        <button
+          class="btn btn-primary w-full rounded-full mt-5 h-14 shadow-md hover:scale-105 hover:-translate-y-1"
+          @click="addItemToBag"
+        >
+          ADD TO BAG
+        </button>
+
+        <p class="text-gray-700 my-10">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia
+          doloremque magni nesciunt exercitationem ex error cum quasi maxime
+          provident inventore.
+        </p>
+      </div>
     </div>
 
     <div v-else>
