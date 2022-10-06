@@ -7,14 +7,13 @@ import SaleHome from "@/components/SaleHome.vue";
 
 <template>
   <main>
-    <div class="container mx-auto grid place-items-center my-5 space-y-10">
+    <div
+      class="container mx-auto grid place-items-center gap-y-10 xl:grid-cols-2 my-5"
+    >
       <SaleHome />
       <SaleHome />
       <SaleHome />
       <SaleHome />
     </div>
-    <!-- <CarouselHome /> -->
-
-    <!-- <HeroHome /> -->
   </main>
 </template>
