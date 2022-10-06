@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import type { DefaultShoeSizeType, ShoeSizeStockType, SizeType } from "@/types";
+import {
+  SizeNameEnum,
+  type DefaultShoeSizeType,
+  type ShoeSizeStockType,
+  type ShoeType,
+  type SizeType,
+} from "@/types";
 import { computed, ref } from "vue";
 
 interface Props {
@@ -8,47 +14,64 @@ interface Props {
 
 const props = defineProps<Props>();
 
-let selectedSize = ref<SizeType | null>(null);
+interface Emits {
+  (e: "sizeSelected", size: SizeNameEnum): void;
+}
+const emit = defineEmits<Emits>();
 
-const isSelectedSize = (size: SizeType) => {
+let selectedSize = ref<SizeNameEnum | null>(null);
+
+const allDefaultSizes: SizeNameEnum[] = [
+  SizeNameEnum.UK_5,
+  SizeNameEnum.UK_5_5,
+  SizeNameEnum.UK_6,
+  SizeNameEnum.UK_6_5,
+  SizeNameEnum.UK_7,
+  SizeNameEnum.UK_7_5,
+  SizeNameEnum.UK_8,
+  SizeNameEnum.UK_8_5,
+  SizeNameEnum.UK_9,
+  SizeNameEnum.UK_9_5,
+  SizeNameEnum.UK_10,
+  SizeNameEnum.UK_10_5,
+  SizeNameEnum.UK_11,
+];
+
+const isSelectedSize = (size: SizeNameEnum) => {
   return selectedSize.value == size;
 };
 
-const setSelectedSize = (e: MouseEvent, size: SizeType) => {
+const setSelectedSize = (e: MouseEvent, size: SizeNameEnum) => {
+  emit("sizeSelected", size);
   // @ts-ignore
   const isDisabled = e.target.classList.contains("disabled");
   if (isDisabled) return;
   selectedSize.value = size;
 };
 
-const outOfStock = (detail: ShoeSizeStockType) => {
-  return detail.stock < 1;
+const availableShoeSizes = computed(() => {
+  return props.shoeDetails.map((detail) => detail.size.name);
+});
+
+const isInStock = (defaultSize: SizeNameEnum) => {
+  return availableShoeSizes.value.includes(defaultSize);
 };
 </script>
 <template>
   <ul class="grid grid-cols-3 gap-2 my-5">
     <li
-      v-for="detail in shoeDetails"
-      :key="detail.size.name"
-      class="border border-gray-300 py-3 px-5 rounded-md text-center font-light cursor-pointer hover:border-black"
+      v-for="defaultSize in allDefaultSizes"
+      :key="defaultSize"
+      class="border border-gray-300 py-3 px-5 rounded-md text-center font-light cursor-pointer hover:border-black transition-all"
       :class="{
         'disabled opacity-50 bg-gray-300 text-gray-700 border-none hover:border-none':
-          outOfStock(detail),
-        'bg-black text-white shadow-2xl': isSelectedSize(detail.size),
+          !isInStock(defaultSize),
+        'bg-black text-white shadow-2xl': isSelectedSize(defaultSize),
       }"
-      @click="(e) => setSelectedSize(e, detail.size)"
+      @click="(e) => setSelectedSize(e, defaultSize)"
     >
-      {{ detail.size.name }}
+      {{ defaultSize }}
     </li>
-    <!-- <li
-      v-for="size in shoeSizes"
-      :key="size.name"
-      class="border border-gray-300 py-3 px-5 rounded-md text-center font-light cursor-pointer hover:border-black"
-      :class="{ 'bg-gray-900 text-white': isSelectedSize(size.id) }"
-      @click="setSelectedSize(size.id)"
-    >
-      {{ size }}
-    </li> -->
   </ul>
 </template>
 <style scoped></style>

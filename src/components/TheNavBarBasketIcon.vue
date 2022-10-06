@@ -1,13 +1,12 @@
 <script setup lang="ts">
+import { useShoppingBagStore } from "@/stores/shoppingBag";
+import { storeToRefs } from "pinia";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
-
-const itemCount = 3;
+import _ from "lodash";
+const shoppingBagStore = useShoppingBagStore();
+const { bagItems, total, itemCount } = storeToRefs(shoppingBagStore);
 const router = useRouter();
-
-const subTotal = computed(() => {
-  return "0.00";
-});
 </script>
 <template>
   <div class="dropdown dropdown-end">
@@ -38,19 +37,19 @@ const subTotal = computed(() => {
     >
       <div class="card-body">
         <span v-if="itemCount" class="font-bold text-lg"
-          >{{ itemCount }} Items</span
+          >{{ itemCount }} items</span
         >
-        <span v-else class="font-bold text-lg">Cart is empty</span>
+        <span v-else class="font-bold text-lg">Your bag is empty</span>
 
-        <span class="text-info">Subtotal: £{{ subTotal }}</span>
+        <span class="text-info">Subtotal: £{{ total }}</span>
         <div class="card-actions">
           <button
             class="btn btn-primary btn-block disabled:opacity-95"
-            :disabled="itemCount == 0"
-            @click="router.push('/cart')"
+            @click="router.push('/bag')"
           >
-            View cart
+            View bag
           </button>
+          <!-- :disabled="itemCount == 0" -->
         </div>
       </div>
     </div>

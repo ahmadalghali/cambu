@@ -17,6 +17,15 @@ const router = createRouter({
       path: "/shoes/:type/:shoeId",
       component: () => import("../views/ShoeView.vue"),
     },
+    {
+      path: "/shoes",
+      component: () => import("../views/ChooseGender.vue"),
+    },
+    {
+      path: "/bag",
+      component: () => import("../views/ShoppingBag.vue"),
+    },
+
     // {
     //   path: '/about',
     //   name: 'about',

@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 </script>
 <template>
-  <div class="card md:h-60 w-11/12 bg-base-100 shadow-xl image-full">
+  <div class="card w-11/12 bg-base-100 shadow-xl image-full">
     <figure>
       <img
         src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2912&q=80"
