@@ -1,15 +1,11 @@
+import type { BagItemType, SizeNameEnum } from "@/types";
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import type { ShoeType, SizeType } from "@/types";
-import _ from "lodash";
+import _, { size } from "lodash";
 
-interface BagItem {
-  shoe: ShoeType;
-  size: SizeType;
-  quantity: number;
-}
 interface State {
-  bagItems: BagItem[];
+  bagItems: BagItemType[];
 }
 
 export const useShoppingBagStore = defineStore("shoppingBag", {
@@ -17,8 +13,22 @@ export const useShoppingBagStore = defineStore("shoppingBag", {
     bagItems: [],
   }),
   actions: {
-    addItemToBag(bagItem: BagItem) {
+    addItemToBag(bagItem: BagItemType) {
       this.bagItems.push(bagItem);
+    },
+    removeItemFromBag(shoeId: number, size: SizeNameEnum) {
+      this.bagItems = this.bagItems
+        .filter((item) => item.shoe.id === shoeId)
+        .filter((item) => item.size.name !== size);
+    },
+    // setItemQuantity(shoeId: number, size: SizeNameEnum) {
+    //    this.getBagItem(shoeId, size);
+
+    // },
+    getBagItem(shoeId: number, size: SizeNameEnum): BagItemType {
+      return this.bagItems
+        .filter((item) => item.shoe.id === shoeId)
+        .filter((item) => item.size.name === size)[0];
     },
   },
   getters: {

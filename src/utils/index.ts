@@ -1,3 +1,3 @@
-export const formatNumStr2DecimalPlaces = (numStr: string): string => {
-  return parseFloat(numStr).toFixed(2);
+export const formatNumStr2DecimalPlaces = (numStr: string | number): string => {
+  return parseFloat("" + numStr).toFixed(2);
 };

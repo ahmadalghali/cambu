@@ -26,6 +26,12 @@ export interface ShoeSizeStockType {
   stock: number;
 }
 
+export interface BagItemType {
+  shoe: ShoeType;
+  size: SizeType;
+  quantity: number;
+}
+
 export enum SizeNameEnum {
   UK_5 = "UK 5",
   UK_5_5 = "UK 5.5",
