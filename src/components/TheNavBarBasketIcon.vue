@@ -33,7 +33,7 @@ const router = useRouter();
     </label>
     <div
       tabindex="0"
-      class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
+      class="hidden mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
     >
       <div class="card-body">
         <span v-if="itemCount" class="font-bold text-lg"

@@ -55,7 +55,7 @@ const router = useRouter();
 
     <div class="navbar-end">
       <TheNavBarSearchIcon />
-      <TheNavBarBasketIcon />
+      <TheNavBarBasketIcon @click="router.push('/bag')" />
     </div>
   </div>
 </template>
