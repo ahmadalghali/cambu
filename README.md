@@ -1,10 +1,11 @@
 # Cambu &nbsp; :athletic_shoe:  :shoe:  🛍️ 🥿
 
-An online web application for a fast-growing shoe brand, built with <strong>Nest.js (Node.js), TypeScript, Vue.js 3, Pinia for State Management and Tailwindcss</strong>.
+A online web application for a fast-growing shoe brand, built with <strong>Nest.js (Node.js), TypeScript, Vue.js 3, Pinia for State Management and Tailwindcss</strong>.
 
 <br>
 
-[comment]: <> (## Project Status &nbsp; :red_circle:)
+## Project Status &nbsp; 
+In Progress
 
 
 ## Project Screen Shots &nbsp; :camera_flash:
@@ -56,9 +57,3 @@ An online web application for a fast-growing shoe brand, built with <strong>Nest
     </td>
   </tr>
 </table>
-
-
-
-## Reflection &nbsp; 	:thought_balloon:
-
-
